@@ -12,3 +12,6 @@ Utilizando seus conhecimentos do módulo de Nuvem com Microsoft Azure, da trilha
 
 ---
 
+
+
+
