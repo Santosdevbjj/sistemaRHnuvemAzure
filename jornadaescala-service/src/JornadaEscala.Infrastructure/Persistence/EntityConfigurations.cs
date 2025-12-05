@@ -5,7 +5,7 @@ namespace JornadaEscala.Infrastructure.Persistence
 {
     /// <summary>
     /// Classe utilitária para aplicar todas as configurações de entidades
-    /// de forma centralizada no DbContext.
+    /// e seeds de forma centralizada no DbContext.
     /// </summary>
     public static class EntityConfigurations
     {
