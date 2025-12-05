@@ -1,0 +1,54 @@
+name: Azure Login & Key Vault Check
+
+on:
+  workflow_dispatch:   # Executa manualmente pelo GitHub Actions
+
+jobs:
+  login-kv-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout do repositório
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Login no Azure usando o segredo AZURE_CREDENTIALS
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # 3. Verificar subscription ativa
+      - name: Verify Azure subscription
+        uses: azure/CLI@v1
+        with:
+          azcliversion: 2.30.0
+          inlineScript: |
+            echo "🔎 Exibindo subscription atual..."
+            az account show --output table || { echo "❌ ERRO: Falha ao exibir a subscription. Verifique o segredo AZURE_CREDENTIALS."; exit 1; }
+
+      # 4. Listar todos os Resource Groups
+      - name: List Resource Groups
+        uses: azure/CLI@v1
+        with:
+          azcliversion: 2.30.0
+          inlineScript: |
+            echo "📂 Listando todos os Resource Groups disponíveis..."
+            az group list --query "[].name" -o table || { echo "❌ ERRO: Falha ao listar Resource Groups. O Service Principal pode não ter permissão de leitura."; exit 1; }
+
+      # 5. Validar acesso ao Key Vault e listar segredos
+      - name: Validate Key Vault access
+        uses: azure/CLI@v1
+        with:
+          azcliversion: 2.30.0
+          inlineScript: |
+            echo "🔑 Validando acesso ao Key Vault: ${{ secrets.AZURE_KEYVAULT_NAME }}"
+            if ! az keyvault show --name ${{ secrets.AZURE_KEYVAULT_NAME }} >/dev/null 2>&1; then
+              echo "❌ ERRO: Key Vault ${{ secrets.AZURE_KEYVAULT_NAME }} não encontrado ou sem permissão."
+              exit 1
+            fi
+
+            echo "📜 Listando segredos disponíveis no Key Vault..."
+            az keyvault secret list --vault-name ${{ secrets.AZURE_KEYVAULT_NAME }} --query "[].id" -o table || { echo "❌ ERRO: Falha ao listar segredos. O Service Principal pode não ter permissão de leitura no Key Vault."; exit 1; }
+
+            echo "✅ Key Vault acessível e segredos listados com sucesso!"
