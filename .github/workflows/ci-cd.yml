@@ -15,21 +15,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Login no Azure usando GitHub Secrets (NÃO expor credenciais no .yml)
+      # 2. Login no Azure
       - name: Azure Login
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      # 3. Recuperar segredos do Key Vault
+      # 3. Recuperar segredos do Key Vault via Azure CLI
       - name: Get secrets from Azure Key Vault
-        uses: azure/keyvault-secrets@v1
+        uses: azure/CLI@v1
         with:
-          keyvault: "meu-vault" # Nome do Key Vault
-          secrets: |
-            ConnectionStrings--DefaultConnection
-            RabbitMq--Password
-            Smtp--Password
+          azcliversion: 2.30.0
+          inlineScript: |
+            echo "ConnectionStrings__DefaultConnection=$(az keyvault secret show --vault-name meu-vault --name ConnectionStrings--DefaultConnection --query value -o tsv)" >> $GITHUB_ENV
+            echo "RabbitMq__Password=$(az keyvault secret show --vault-name meu-vault --name RabbitMq--Password --query value -o tsv)" >> $GITHUB_ENV
+            echo "Smtp__Password=$(az keyvault secret show --vault-name meu-vault --name Smtp--Password --query value -o tsv)" >> $GITHUB_ENV
 
       # 4. Configurar .NET SDK
       - name: Setup .NET
@@ -45,7 +45,7 @@ jobs:
       - name: Run tests
         run: dotnet test SistemaRH.sln --no-build --verbosity normal
 
-      # 7. Deploy para Azure Web App (exemplo)
+      # 7. Deploy para Azure Web App
       - name: Deploy to Azure WebApp
         uses: azure/webapps-deploy@v2
         with:
