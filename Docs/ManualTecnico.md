@@ -1,5 +1,3 @@
-`markdown
-
 **Manual Técnico do Sistema de Recursos Humanos**
 
 •  **Visão Geral**
