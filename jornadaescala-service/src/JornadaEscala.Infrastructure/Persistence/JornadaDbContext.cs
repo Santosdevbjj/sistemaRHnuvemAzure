@@ -1,6 +1,14 @@
 using JornadaEscala.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    // Aplica configuração separada
+    modelBuilder.ApplyConfiguration(new JornadaTrabalhoConfig());
+
+    // Outros mapeamentos...
+    JornadaSeeds.Seed(modelBuilder);
+}
 namespace JornadaEscala.Infrastructure.Persistence
 {
     /// <summary>
