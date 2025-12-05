@@ -29,139 +29,16 @@ Este repositório consolida uma arquitetura de microsserviços para um Sistema d
 
 ---
 
-**Estrutura de pastas no GitHub**
-
-**Esquema visual das pastas e arquivos**
+**Estrutura de pastas e arquivos no GitHub**
 
 
-sistemaRHnuvemAzure/
-├─ services/
-│  ├─ auth-service/
-│  │  ├─ src/
-│  │  │  ├─ Auth.Api/
-│  │  │  │  ├─ Auth.Api.csproj
-│  │  │  │  ├─ Endpoints/AuthEndpoints.cs
-│  │  │  │  ├─ Program.cs
-│  │  │  │  └─ appsettings.json
-│  │  │  ├─ Auth.Domain/
-│  │  │  │  ├─ Auth.Domain.csproj
-│  │  │  │  └─ Entities/UsuarioSistema.cs
-│  │  │  └─ Auth.Infrastructure/
-│  │  │     ├─ Auth.Infrastructure.csproj
-│  │  │     ├─ Persistence/AuthDbContext.cs
-│  │  │     └─ Services/TokenService.cs
-│  │  └─ tests/
-│  │     └─ Auth.Tests/Auth.Tests.csproj
-│  │  └─ Dockerfile
-│  ├─ funcionarios-service/
-│  │  ├─ src/
-│  │  │  ├─ Funcionarios.Api/
-│  │  │  │  ├─ Funcionarios.Api.csproj
-│  │  │  │  ├─ Endpoints/FuncionarioEndpoints.cs
-│  │  │  │  ├─ Program.cs
-│  │  │  │  └─ appsettings.json
-│  │  │  ├─ Funcionarios.Domain/
-│  │  │  │  ├─ Funcionarios.Domain.csproj
-│  │  │  │  └─ Entities/Funcionario.cs
-│  │  │  └─ Funcionarios.Infrastructure/
-│  │  │     ├─ Funcionarios.Infrastructure.csproj
-│  │  │     └─ Persistence/FuncionariosDbContext.cs
-│  │  └─ tests/
-│  │     ├─ Funcionarios.UnitTests/Funcionarios.UnitTests.csproj
-│  │     └─ Funcionarios.Bdd/
-│  │        ├─ Funcionarios.Bdd.csproj
-│  │        ├─ Features/CadastroFuncionario.feature
-│  │        └─ Steps/CadastroFuncionarioSteps.cs
-│  │  └─ Dockerfile
-│  ├─ jornadaescala-service/
-│  │  ├─ src/
-│  │  │  ├─ JornadaEscala.Api/
-│  │  │  │  ├─ JornadaEscala.Api.csproj
-│  │  │  │  ├─ Endpoints/JornadaEndpoints.cs
-│  │  │  │  ├─ Endpoints/EscalaEndpoints.cs
-│  │  │  │  ├─ Endpoints/PontoEndpoints.cs
-│  │  │  │  └─ Program.cs
-│  │  │  ├─ JornadaEscala.Domain/
-│  │  │  │  └─ JornadaEscala.Domain.csproj
-│  │  │  └─ JornadaEscala.Infrastructure/
-│  │  │     ├─ JornadaEscala.Infrastructure.csproj
-│  │  │     ├─ Persistence/JornadaDbContext.cs
-│  │  │     ├─ Seeds/JornadaSeeds.cs
-│  │  │     ├─ Configurations/FuncionarioConfig.cs
-│  │  │     ├─ Configurations/EnderecoFuncionarioConfig.cs
-│  │  │     ├─ Configurations/JornadaTrabalhoConfig.cs
-│  │  │     ├─ Configurations/EscalaTrabalhoConfig.cs
-│  │  │     ├─ Configurations/RegistroPontoConfig.cs
-│  │  │     ├─ Persistence/EntityConfigurations.cs
-│  │  │     └─ Persistence/PersistenceServiceExtensions.cs
-│  │  └─ tests/
-│  │     └─ JornadaEscala.Tests/JornadaEscala.Tests.csproj
-│  ├─ folha-service/
-│  │  ├─ src/
-│  │  │  ├─ Folha.Api/Folha.Api.csproj
-│  │  │  ├─ Folha.Domain/
-│  │  │  │  ├─ Folha.Domain.csproj
-│  │  │  │  └─ Services/CalculadoraFolha.cs
-│  │  │  └─ Folha.Infrastructure/Folha.Infrastructure.csproj
-│  │  └─ tests/
-│  │     ├─ Folha.Tests/Folha.Tests.csproj
-│  │     └─ Folha.Tests/CalculadoraFolhaTests.cs
-│  ├─ beneficios-service/
-│  │  ├─ src/
-│  │  │  ├─ Beneficios.Api/Beneficios.Api.csproj
-│  │  │  ├─ Beneficios.Domain/Beneficios.Domain.csproj
-│  │  │  └─ Beneficios.Infrastructure/Beneficios.Infrastructure.csproj
-│  │  └─ tests/Beneficios.Tests/Beneficios.Tests.csproj
-│  ├─ logs-service/
-│  │  ├─ src/
-│  │  │  ├─ Logs.Api/Logs.Api.csproj
-│  │  │  ├─ Logs.Infrastructure/
-│  │  │  │  ├─ Logs.Infrastructure.csproj
-│  │  │  │  ├─ TableStorage/FuncionarioLogEntity.cs
-│  │  │  │  └─ Messaging/FuncionarioEventsConsumer.cs
-│  │  └─ tests/Logs.Tests/Logs.Tests.csproj
-│  └─ notifications-service/
-│     ├─ src/
-│     │  └─ Notifications.Api/
-│     │     ├─ Notifications.Api.csproj
-│     │     ├─ Program.cs
-│     │     ├─ Messaging/EventConsumers.cs
-│     │     └─ Services/EmailSender.cs
-│     └─ tests/Notifications.Tests/Notifications.Tests.csproj
-├─ gateway/
-│  ├─ src/ApiGateway/
-│  │  ├─ ApiGateway.csproj
-│  │  ├─ Program.cs
-│  │  └─ appsettings.json
-│  └─ Dockerfile
-├─ shared/
-│  └─ src/SharedKernel/
-│     ├─ SharedKernel.csproj
-│     ├─ Events/FuncionarioEvents.cs
-│     ├─ Auth/JwtExtensions.cs
-│     └─ Messaging/RabbitMqProducer.cs
-├─ tests/
-│  └─ JornadaEscala.Api.Tests/
-│     ├─ JornadaEndpointsTests.cs
-│     ├─ EscalaEndpointsTests.cs
-│     └─ PontoEndpointsTests.cs
-├─ Docs/
-│  ├─ ManualTecnico.md
-│  ├─ ManualLeigo.md
-│  ├─ horarios_trabalho.csv
-│  ├─ tabelassqlddl.sql
-│  ├─ scriptscriacaotabelas.sql
-│  └─ scripts_seeds.sql
-├─ .github/workflows/
-│  ├─ ci-cd.yml
-│  ├─ aks-deploy.yml
-│  └─ aks-secrets-deploy.yml
-├─ deployment.yaml
-├─ docker-compose.yml
-├─ SistemaRH.sln
-├─ .gitignore
-└─ README.md (este arquivo)
-`
+
+<img width="895" height="1670" alt="Screenshot_20251205-155134" src="https://github.com/user-attachments/assets/9d91e35d-c9c2-4b67-8de8-2067dbfff218" />
+<img width="917" height="1630" alt="Screenshot_20251205-155237" src="https://github.com/user-attachments/assets/fac9a00f-2893-4d2a-aab4-eaa1b0d4ed20" />
+<img width="900" height="1544" alt="Screenshot_20251205-155331" src="https://github.com/user-attachments/assets/076cf9c8-7f26-4bb0-adbf-e35404eb64ae" />
+<img width="934" height="1548" alt="Screenshot_20251205-155506" src="https://github.com/user-attachments/assets/d393457b-c826-4907-bf84-541a44503bbf" />
+
+
 
 ---
 
@@ -297,7 +174,7 @@ sistemaRHnuvemAzure/
 
 **Como compilar e rodar testes**
 
-Build
+**Build**
 
 - Build da solução completa:
   `bash
@@ -394,7 +271,7 @@ Build
 
 • **Como evitar esse erro no futuro**
 
-- Políticas e práticas:
+- **Políticas e práticas:**
   - Nunca commitar .env, appsettings.*.local.json, secrets.json, perfis de publicação.
   - Reforçar .gitignore (já configurado neste repo).
   - Usar Azure Key Vault e Managed Identity para acesso em produção.
@@ -421,18 +298,18 @@ Build
 
 • **Referência rápida de caminhos importantes**
 
-- Solução: SistemaRH.sln
-- Compose: docker-compose.yml
-- Manifesto Kubernetes: deployment.yaml
-- Pipelines: .github/workflows/ci-cd.yml, aks-deploy.yml, aks-secrets-deploy.yml
-- Gateway: gateway/src/ApiGateway/Program.cs, gateway/src/ApiGateway/appsettings.json
-- Shared Kernel: shared/src/SharedKernel/SharedKernel.csproj
-- Auth: services/auth-service/src/Auth.Api/Program.cs, services/auth-service/src/Auth.Infrastructure/Persistence/AuthDbContext.cs
-- Funcionários: services/funcionarios-service/src/Funcionarios.Api/Program.cs, services/funcionarios-service/src/Funcionarios.Infrastructure/Persistence/FuncionariosDbContext.cs
-- Jornada/Escala: services/jornadaescala-service/src/JornadaEscala.Api/Program.cs, .../Persistence/JornadaDbContext.cs
-- Folha: services/folha-service/src/Folha.Domain/Services/CalculadoraFolha.cs
-- Logs: services/logs-service/src/Logs.Infrastructure/Messaging/FuncionarioEventsConsumer.cs
-- Notificações: services/notifications-service/src/Notifications.Api/Program.cs
+- **Solução:** SistemaRH.sln
+- **Compose:** docker-compose.yml
+- **Manifesto Kubernetes:** deployment.yaml
+- **Pipelines:** .github/workflows/ci-cd.yml, aks-deploy.yml, aks-secrets-deploy.yml
+- **Gateway:** gateway/src/ApiGateway/Program.cs, gateway/src/ApiGateway/appsettings.json
+- **Shared Kernel:** shared/src/SharedKernel/SharedKernel.csproj
+- **Auth:** services/auth-service/src/Auth.Api/Program.cs, services/auth-service/src/Auth.Infrastructure/Persistence/AuthDbContext.cs
+- **Funcionários:** services/funcionarios-service/src/Funcionarios.Api/Program.cs, services/funcionarios-service/src/Funcionarios.Infrastructure/Persistence/FuncionariosDbContext.cs
+- **Jornada/Escala:** services/jornadaescala-service/src/JornadaEscala.Api/Program.cs, .../Persistence/JornadaDbContext.cs
+- **Folha:** services/folha-service/src/Folha.Domain/Services/CalculadoraFolha.cs
+- **Logs:** services/logs-service/src/Logs.Infrastructure/Messaging/FuncionarioEventsConsumer.cs
+- **Notificações:** services/notifications-service/src/Notifications.Api/Program.cs
 
 ---
 
