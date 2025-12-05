@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: funcionarios-api
-          image: meuacr.azurecr.io/sistema-rh-funcionarios:latest
+          image: meuacr.azurecr.io/sistema-rh-funcionarios:1.0.0 # use versão ou SHA, nunca latest
           ports:
             - containerPort: 80
           env:
@@ -35,6 +35,29 @@ spec:
                 secretKeyRef:
                   name: rh-secrets
                   key: Smtp__Password
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 3
       imagePullSecrets:
         - name: acr-secret
 ---
@@ -43,7 +66,7 @@ kind: Service
 metadata:
   name: funcionarios-api-service
 spec:
-  type: ClusterIP
+  type: LoadBalancer   # pode ser alterado para ClusterIP ou Ingress conforme necessidade
   selector:
     app: funcionarios-api
   ports:
