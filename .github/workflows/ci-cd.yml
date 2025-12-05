@@ -11,17 +11,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout do código
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Login no Azure
       - name: Azure Login
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      # 3. Recuperar segredos do Key Vault via Azure CLI
       - name: Get secrets from Azure Key Vault
         uses: azure/CLI@v1
         with:
@@ -31,24 +28,20 @@ jobs:
             echo "RabbitMq__Password=$(az keyvault secret show --vault-name meu-vault --name RabbitMq--Password --query value -o tsv)" >> $GITHUB_ENV
             echo "Smtp__Password=$(az keyvault secret show --vault-name meu-vault --name Smtp--Password --query value -o tsv)" >> $GITHUB_ENV
 
-      # 4. Configurar .NET SDK
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x'
 
-      # 5. Build da solução
       - name: Build solution
         run: dotnet build SistemaRH.sln --configuration Release
 
-      # 6. Testes
       - name: Run tests
         run: dotnet test SistemaRH.sln --no-build --verbosity normal
 
-      # 7. Deploy para Azure Web App
       - name: Deploy to Azure WebApp
         uses: azure/webapps-deploy@v2
         with:
           app-name: "sistema-rh-app"
           slot-name: "production"
-          package: "./services/funcionarios-service/src/Funcionarios.Api/bin/Release/net10/publish"
+          package: "./services/funcionarios-service/src/Funcionarios.Api/bin/Release/net10.0/publish"
