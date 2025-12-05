@@ -1,0 +1,30 @@
+name: Azure Login Check
+
+on:
+  workflow_dispatch:   # Permite rodar manualmente pelo GitHub Actions
+
+jobs:
+  login-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout do repositório
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Login no Azure usando o segredo AZURE_CREDENTIALS
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # 3. Verificar se o login funcionou e mostrar a subscription ativa
+      - name: Verify Azure context
+        uses: azure/CLI@v1
+        with:
+          azcliversion: 2.30.0
+          inlineScript: |
+            echo "🔎 Exibindo subscription atual..."
+            az account show --output table || { echo "❌ ERRO: Falha ao exibir a subscription. Verifique o segredo AZURE_CREDENTIALS."; exit 1; }
+
+            echo "✅ Login realizado com sucesso!"
