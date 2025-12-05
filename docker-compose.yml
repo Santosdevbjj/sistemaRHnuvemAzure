@@ -1,0 +1,142 @@
+version: "3.9"
+services:
+  api-gateway:
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    image: rh-api-gateway
+    container_name: api-gateway
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "8080:8080"
+    depends_on:
+      - auth-service
+      - funcionarios-service
+      - jornadaescala-service
+      - folha-service
+      - beneficios-service
+      - logs-service
+      - notifications-service
+
+  auth-service:
+    build:
+      context: ./services/auth-service
+      dockerfile: Dockerfile
+    image: rh-auth
+    container_name: auth-service
+    environment:
+      - ConnectionStrings__DefaultConnection=${AUTH_SQL}
+      - Jwt__Key=${JWT_KEY}
+      - Jwt__Issuer=sistema-rh
+      - Jwt__Audience=sistema-rh-client
+      - RabbitMQ__HostName=rabbitmq
+      - RabbitMQ__User=guest
+      - RabbitMQ__Password=guest
+    ports:
+      - "8081:8080"
+
+  funcionarios-service:
+    build:
+      context: ./services/funcionarios-service
+      dockerfile: Dockerfile
+    image: rh-funcionarios
+    container_name: funcionarios-service
+    environment:
+      - ConnectionStrings__DefaultConnection=${FUNC_SQL}
+      - Jwt__Key=${JWT_KEY}
+      - Jwt__Issuer=sistema-rh
+      - Jwt__Audience=sistema-rh-client
+      - RabbitMQ__HostName=rabbitmq
+      - RabbitMQ__User=guest
+      - RabbitMQ__Password=guest
+    ports:
+      - "8082:8080"
+    depends_on:
+      - rabbitmq
+
+  jornadaescala-service:
+    build:
+      context: ./services/jornadaescala-service
+    image: rh-jornadaescala
+    container_name: jornadaescala-service
+    environment:
+      - ConnectionStrings__DefaultConnection=${JORNADA_SQL}
+      - Jwt__Key=${JWT_KEY}
+      - Jwt__Issuer=sistema-rh
+      - Jwt__Audience=sistema-rh-client
+    ports:
+      - "8083:8080"
+
+  folha-service:
+    build:
+      context: ./services/folha-service
+    image: rh-folha
+    container_name: folha-service
+    environment:
+      - ConnectionStrings__DefaultConnection=${FOLHA_SQL}
+      - Jwt__Key=${JWT_KEY}
+      - Jwt__Issuer=sistema-rh
+      - Jwt__Audience=sistema-rh-client
+      - RabbitMQ__HostName=rabbitmq
+      - RabbitMQ__User=guest
+      - RabbitMQ__Password=guest
+    ports:
+      - "8084:8080"
+    depends_on:
+      - rabbitmq
+
+  beneficios-service:
+    build:
+      context: ./services/beneficios-service
+    image: rh-beneficios
+    container_name: beneficios-service
+    environment:
+      - ConnectionStrings__DefaultConnection=${BEN_SQL}
+      - Jwt__Key=${JWT_KEY}
+      - Jwt__Issuer=sistema-rh
+      - Jwt__Audience=sistema-rh-client
+    ports:
+      - "8085:8080"
+
+  logs-service:
+    build:
+      context: ./services/logs-service
+    image: rh-logs
+    container_name: logs-service
+    environment:
+      - AzureTable__ConnectionString=${AZURE_STORAGE_CONNECTION_STRING}
+      - RabbitMQ__HostName=rabbitmq
+      - RabbitMQ__User=guest
+      - RabbitMQ__Password=guest
+      - Jwt__Key=${JWT_KEY}
+      - Jwt__Issuer=sistema-rh
+      - Jwt__Audience=sistema-rh-client
+    ports:
+      - "8086:8080"
+    depends_on:
+      - rabbitmq
+
+  notifications-service:
+    build:
+      context: ./services/notifications-service
+    image: rh-notifications
+    container_name: notifications-service
+    environment:
+      - RabbitMQ__HostName=rabbitmq
+      - RabbitMQ__User=guest
+      - RabbitMQ__Password=guest
+    ports:
+      - "8087:8080"
+    depends_on:
+      - rabbitmq
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
