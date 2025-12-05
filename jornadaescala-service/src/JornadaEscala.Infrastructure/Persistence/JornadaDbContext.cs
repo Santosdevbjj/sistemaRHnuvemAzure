@@ -10,6 +10,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
     // Seeds de JornadaTrabalho
     JornadaSeeds.Seed(modelBuilder);
+    EntityConfigurations.ApplyAll(modelBuilder);
 }
 namespace JornadaEscala.Infrastructure.Persistence
 {
