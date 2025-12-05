@@ -11,39 +11,35 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout do código
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Login no Azure usando GitHub Secrets (Service Principal)
       - name: Azure Login
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      # 3. Configurar kubectl para acessar o cluster AKS
       - name: Set AKS context
         uses: azure/aks-set-context@v3
         with:
           resource-group: ${{ secrets.AZURE_RESOURCE_GROUP }}
           cluster-name: ${{ secrets.AZURE_AKS_CLUSTER }}
 
-      # 4. Recuperar segredos do Key Vault
+      # Recuperar segredos via Azure CLI
       - name: Get secrets from Azure Key Vault
-        uses: azure/keyvault-secrets@v1
+        uses: azure/CLI@v1
         with:
-          keyvault: "meu-vault" # Nome do Key Vault
-          secrets: |
-            ConnectionStrings--DefaultConnection
-            RabbitMq--Password
-            Smtp--Password
+          azcliversion: 2.30.0
+          inlineScript: |
+            echo "ConnectionStrings__DefaultConnection=$(az keyvault secret show --vault-name meu-vault --name ConnectionStrings--DefaultConnection --query value -o tsv)" >> $GITHUB_ENV
+            echo "RabbitMq__Password=$(az keyvault secret show --vault-name meu-vault --name RabbitMq--Password --query value -o tsv)" >> $GITHUB_ENV
+            echo "Smtp__Password=$(az keyvault secret show --vault-name meu-vault --name Smtp--Password --query value -o tsv)" >> $GITHUB_ENV
 
-      # 5. Build da imagem Docker
+      # Build da imagem Docker
       - name: Build Docker image
         run: |
           docker build -t ${{ secrets.ACR_LOGIN_SERVER }}/sistema-rh-funcionarios:${{ github.sha }} ./services/funcionarios-service/src/Funcionarios.Api
 
-      # 6. Login no Azure Container Registry (ACR)
       - name: ACR Login
         uses: azure/docker-login@v1
         with:
@@ -51,12 +47,10 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
-      # 7. Push da imagem para o ACR
       - name: Push Docker image
         run: |
           docker push ${{ secrets.ACR_LOGIN_SERVER }}/sistema-rh-funcionarios:${{ github.sha }}
 
-      # 8. Atualizar deployment no AKS
       - name: Deploy to AKS
         run: |
           kubectl set image deployment/funcionarios-api funcionarios-api=${{ secrets.ACR_LOGIN_SERVER }}/sistema-rh-funcionarios:${{ github.sha }}
