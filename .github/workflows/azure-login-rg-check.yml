@@ -1,0 +1,39 @@
+name: Azure Login & Resource Groups Check
+
+on:
+  workflow_dispatch:   # Executa manualmente pelo GitHub Actions
+
+jobs:
+  login-rg-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout do repositório
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Login no Azure usando o segredo AZURE_CREDENTIALS
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # 3. Verificar subscription ativa
+      - name: Verify Azure subscription
+        uses: azure/CLI@v1
+        with:
+          azcliversion: 2.30.0
+          inlineScript: |
+            echo "🔎 Exibindo subscription atual..."
+            az account show --output table || { echo "❌ ERRO: Falha ao exibir a subscription. Verifique o segredo AZURE_CREDENTIALS."; exit 1; }
+
+      # 4. Listar todos os Resource Groups
+      - name: List Resource Groups
+        uses: azure/CLI@v1
+        with:
+          azcliversion: 2.30.0
+          inlineScript: |
+            echo "📂 Listando todos os Resource Groups disponíveis..."
+            az group list --query "[].name" -o table || { echo "❌ ERRO: Falha ao listar Resource Groups. O Service Principal pode não ter permissão de leitura."; exit 1; }
+
+            echo "✅ Resource Groups listados com sucesso!"
