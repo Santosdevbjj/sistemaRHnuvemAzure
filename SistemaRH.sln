@@ -1,0 +1,288 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "gateway", "gateway", "{F3B0A2A0-8C44-4C2E-9E53-9B2E1F0A1C11}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{7E1A1B9B-5A6E-4A63-9E3E-6E5D1C7BB222}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{B77E3F3A-9873-4C6D-A1E8-3C4F5D6E7F33}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "auth-service", "auth-service", "{A1C2D3E4-F5A6-47B8-9C10-11D12E13F144}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "funcionarios-service", "funcionarios-service", "{C2D3E4F5-A6B7-48C9-8D10-21E31F41A255}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "jornadaescala-service", "jornadaescala-service", "{D3E4F5A6-B7C8-49DA-7E10-31F41A51B366}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "folha-service", "folha-service", "{E4F5A6B7-C8D9-4AEB-6F10-41A51B61C477}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "beneficios-service", "beneficios-service", "{F5A6B7C8-D9EA-4BFC-5F10-51B61C71D588}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "logs-service", "logs-service", "{A6B7C8D9-EAFB-4C0D-4F10-61C71D81E699}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "notifications-service", "notifications-service", "{B7C8D9EA-FB0C-4D1E-3F10-71D81E91F7AA}"
+EndProject
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "gateway\src\ApiGateway\ApiGateway.csproj", "{11111111-1111-1111-1111-111111111111}"
+EndProject
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedKernel", "shared\src\SharedKernel\SharedKernel.csproj", "{22222222-2222-2222-2222-222222222222}"
+EndProject
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Api", "services\auth-service\src\Auth.Api\Auth.Api.csproj", "{33333333-3333-3333-3333-333333333333}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Domain", "services\auth-service\src\Auth.Domain\Auth.Domain.csproj", "{44444444-4444-4444-4444-444444444444}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Infrastructure", "services\auth-service\src\Auth.Infrastructure\Auth.Infrastructure.csproj", "{55555555-5555-5555-5555-555555555555}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Tests", "services\auth-service\tests\Auth.Tests\Auth.Tests.csproj", "{66666666-6666-6666-6666-666666666666}"
+EndProject
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funcionarios.Api", "services\funcionarios-service\src\Funcionarios.Api\Funcionarios.Api.csproj", "{77777777-7777-7777-7777-777777777777}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funcionarios.Domain", "services\funcionarios-service\src\Funcionarios.Domain\Funcionarios.Domain.csproj", "{88888888-8888-8888-8888-888888888888}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funcionarios.Infrastructure", "services\funcionarios-service\src\Funcionarios.Infrastructure\Funcionarios.Infrastructure.csproj", "{99999999-9999-9999-9999-999999999999}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funcionarios.UnitTests", "services\funcionarios-service\tests\Funcionarios.UnitTests\Funcionarios.UnitTests.csproj", "{AAAAAAA0-AAAA-AAAA-AAAA-AAAAAAAAAAAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Funcionarios.Bdd", "services\funcionarios-service\tests\Funcionarios.Bdd\Funcionarios.Bdd.csproj", "{BBBBBBB0-BBBB-BBBB-BBBB-BBBBBBBBBBBB}"
+EndProject
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JornadaEscala.Api", "services\jornadaescala-service\src\JornadaEscala.Api\JornadaEscala.Api.csproj", "{CCCCCCC0-CCCC-CCCC-CCCC-CCCCCCCCCCCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JornadaEscala.Domain", "services\jornadaescala-service\src\JornadaEscala.Domain\JornadaEscala.Domain.csproj", "{DDDDDDD0-DDDD-DDDD-DDDD-DDDDDDDDDDDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JornadaEscala.Infrastructure", "services\jornadaescala-service\src\JornadaEscala.Infrastructure\JornadaEscala.Infrastructure.csproj", "{EEEEEEE0-EEEE-EEEE-EEEE-EEEEEEEEEEEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JornadaEscala.Tests", "services\jornadaescala-service\tests\JornadaEscala.Tests\JornadaEscala.Tests.csproj", "{FFFFFFF0-FFFF-FFFF-FFFF-FFFFFFFFFFFF}"
+EndProject
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Folha.Api", "services\folha-service\src\Folha.Api\Folha.Api.csproj", "{12121212-1212-1212-1212-121212121212}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Folha.Domain", "services\folha-service\src\Folha.Domain\Folha.Domain.csproj", "{13131313-1313-1313-1313-131313131313}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Folha.Infrastructure", "services\folha-service\src\Folha.Infrastructure\Folha.Infrastructure.csproj", "{14141414-1414-1414-1414-141414141414}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Folha.Tests", "services\folha-service\tests\Folha.Tests\Folha.Tests.csproj", "{15151515-1515-1515-1515-151515151515}"
+EndProject
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beneficios.Api", "services\beneficios-service\src\Beneficios.Api\Beneficios.Api.csproj", "{16161616-1616-1616-1616-161616161616}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beneficios.Domain", "services\beneficios-service\src\Beneficios.Domain\Beneficios.Domain.csproj", "{17171717-1717-1717-1717-171717171717}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beneficios.Infrastructure", "services\beneficios-service\src\Beneficios.Infrastructure\Beneficios.Infrastructure.csproj", "{18181818-1818-1818-1818-181818181818}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beneficios.Tests", "services\beneficios-service\tests\Beneficios.Tests\Beneficios.Tests.csproj", "{19191919-1919-1919-1919-191919191919}"
+EndProject
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logs.Api", "services\logs-service\src\Logs.Api\Logs.Api.csproj", "{20202020-2020-2020-2020-202020202020}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logs.Infrastructure", "services\logs-service\src\Logs.Infrastructure\Logs.Infrastructure.csproj", "{21212121-2121-2121-2121-212121212121}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logs.Tests", "services\logs-service\tests\Logs.Tests\Logs.Tests.csproj", "{22232323-2323-2323-2323-232323232323}"
+EndProject
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notifications.Api", "services\notifications-service\src\Notifications.Api\Notifications.Api.csproj", "{24242424-2424-2424-2424-242424242424}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notifications.Tests", "services\notifications-service\tests\Notifications.Tests\Notifications.Tests.csproj", "{25252525-2525-2525-2525-252525252525}"
+EndProject
+
+Global
+    GlobalSection(SolutionConfigurationPlatforms) = preSolution
+        Debug|Any CPU = Debug|Any CPU
+        Release|Any CPU = Release|Any CPU
+    EndGlobalSection
+
+    GlobalSection(ProjectConfigurationPlatforms) = postSolution
+        {11111111-1111-1111-1111-111111111111}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {11111111-1111-1111-1111-111111111111}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {11111111-1111-1111-1111-111111111111}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {11111111-1111-1111-1111-111111111111}.Release|Any CPU.Build.0 = Release|Any CPU
+
+        {22222222-2222-2222-2222-222222222222}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {22222222-2222-2222-2222-222222222222}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {22222222-2222-2222-2222-222222222222}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {22222222-2222-2222-2222-222222222222}.Release|Any CPU.Build.0 = Release|Any CPU
+
+        {33333333-3333-3333-3333-333333333333}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {33333333-3333-3333-3333-333333333333}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {33333333-3333-3333-3333-333333333333}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {33333333-3333-3333-3333-333333333333}.Release|Any CPU.Build.0 = Release|Any CPU
+
+        {44444444-4444-4444-4444-444444444444}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {44444444-4444-4444-4444-444444444444}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {44444444-4444-4444-4444-444444444444}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {44444444-4444-4444-4444-444444444444}.Release|Any CPU.Build.0 = Release|Any CPU
+
+        {55555555-5555-5555-5555-555555555555}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {55555555-5555-5555-5555-555555555555}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {55555555-5555-5555-5555-555555555555}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {55555555-5555-5555-5555-555555555555}.Release|Any CPU.Build.0 = Release|Any CPU
+
+        {66666666-6666-6666-6666-666666666666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {66666666-6666-6666-6666-666666666666}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {66666666-6666-6666-6666-666666666666}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {66666666-6666-6666-6666-666666666666}.Release|Any CPU.Build.0 = Release|Any CPU
+
+        {77777777-7777-7777-7777-777777777777}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {77777777-7777-7777-7777-777777777777}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {77777777-7777-7777-7777-777777777777}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {77777777-7777-7777-7777-777777777777}.Release|Any CPU.Build.0 = Release|Any CPU
+
+        {88888888-8888-8888-8888-888888888888}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {88888888-8888-8888-8888-888888888888}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {88888888-8888-8888-8888-888888888888}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {88888888-8888-8888-8888-888888888888}.Release|Any CPU.Build.0 = Release|Any CPU
+
+        {99999999-9999-9999-9999-999999999999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {99999999-9999-9999-9999-999999999999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {99999999-9999-9999-9999-999999999999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {99999999-9999-9999-9999-999999999999}.Release|Any CPU.Build.0 = Release|Any CPU
+
+        {AAAAAAA0-AAAA-AAAA-AAAA-AAAAAAAAAAAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {AAAAAAA0-AAAA-AAAA-AAAA-AAAAAAAAAAAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {AAAAAAA0-AAAA-AAAA-AAAA-AAAAAAAAAAAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {AAAAAAA0-AAAA-AAAA-AAAA-AAAAAAAAAAAA}.Release|Any CPU.Build.0 = Release|Any CPU
+
+        {BBBBBBB0-BBBB-BBBB-BBBB-BBBBBBBBBBBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {BBBBBBB0-BBBB-BBBB-BBBB-BBBBBBBBBBBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {BBBBBBB0-BBBB-BBBB-BBBB-BBBBBBBBBBBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {BBBBBBB0-BBBB-BBBB-BBBB-BBBBBBBBBBBB}.Release|Any CPU.Build.0 = Release|Any CPU
+
+        {CCCCCCC0-CCCC-CCCC-CCCC-CCCCCCCCCCCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {CCCCCCC0-CCCC-CCCC-CCCC-CCCCCCCCCCCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {CCCCCCC0-CCCC-CCCC-CCCC-CCCCCCCCCCCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {CCCCCCC0-CCCC-CCCC-CCCC-CCCCCCCCCCCC}.Release|Any CPU.Build.0 = Release|Any CPU
+
+        {DDDDDDD0-DDDD-DDDD-DDDD-DDDDDDDDDDDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {DDDDDDD0-DDDD-DDDD-DDDD-DDDDDDDDDDDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {DDDDDDD0-DDDD-DDDD-DDDD-DDDDDDDDDDDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {DDDDDDD0-DDDD-DDDD-DDDD-DDDDDDDDDDDD}.Release|Any CPU.Build.0 = Release|Any CPU
+
+        {EEEEEEE0-EEEE-EEEE-EEEE-EEEEEEEEEEEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {EEEEEEE0-EEEE-EEEE-EEEE-EEEEEEEEEEEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {EEEEEEE0-EEEE-EEEE-EEEE-EEEEEEEEEEEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {EEEEEEE0-EEEE-EEEE-EEEE-EEEEEEEEEEEE}.Release|Any CPU.Build.0 = Release|Any CPU
+
+        {FFFFFFF0-FFFF-FFFF-FFFF-FFFFFFFFFFFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {FFFFFFF0-FFFF-FFFF-FFFF-FFFFFFFFFFFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {FFFFFFF0-FFFF-FFFF-FFFF-FFFFFFFFFFFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {FFFFFFF0-FFFF-FFFF-FFFF-FFFFFFFFFFFF}.Release|Any CPU.Build.0 = Release|Any CPU
+
+        {12121212-1212-1212-1212-121212121212}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {12121212-1212-1212-1212-121212121212}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {12121212-1212-1212-1212-121212121212}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {12121212-1212-1212-1212-121212121212}.Release|Any CPU.Build.0 = Release|Any CPU
+
+        {13131313-1313-1313-1313-131313131313}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {13131313-1313-1313-1313-131313131313}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {13131313-1313-1313-1313-131313131313}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {13131313-1313-1313-1313-131313131313}.Release|Any CPU.Build.0 = Release|Any CPU
+
+        {14141414-1414-1414-1414-141414141414}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {14141414-1414-1414-1414-141414141414}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {14141414-1414-1414-1414-141414141414}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {14141414-1414-1414-1414-141414141414}.Release|Any CPU.Build.0 = Release|Any CPU
+
+        {15151515-1515-1515-1515-151515151515}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {15151515-1515-1515-1515-151515151515}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {15151515-1515-1515-1515-151515151515}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {15151515-1515-1515-1515-151515151515}.Release|Any CPU.Build.0 = Release|Any CPU
+
+        {16161616-1616-1616-1616-161616161616}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {16161616-1616-1616-1616-161616161616}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {16161616-1616-1616-1616-161616161616}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {16161616-1616-1616-1616-161616161616}.Release|Any CPU.Build.0 = Release|Any CPU
+
+        {17171717-1717-1717-1717-171717171717}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {17171717-1717-1717-1717-171717171717}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {17171717-1717-1717-1717-171717171717}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {17171717-1717-1717-1717-171717171717}.Release|Any CPU.Build.0 = Release|Any CPU
+
+        {18181818-1818-1818-1818-181818181818}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {18181818-1818-1818-1818-181818181818}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {18181818-1818-1818-1818-181818181818}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {18181818-1818-1818-1818-181818181818}.Release|Any CPU.Build.0 = Release|Any CPU
+
+        {19191919-1919-1919-1919-191919191919}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {19191919-1919-1919-1919-191919191919}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {19191919-1919-1919-1919-191919191919}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {19191919-1919-1919-1919-191919191919}.Release|Any CPU.Build.0 = Release|Any CPU
+
+        {20202020-2020-2020-2020-202020202020}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {20202020-2020-2020-2020-202020202020}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {20202020-2020-2020-2020-202020202020}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {20202020-2020-2020-2020-202020202020}.Release|Any CPU.Build.0 = Release|Any CPU
+
+        {21212121-2121-2121-2121-212121212121}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {21212121-2121-2121-2121-212121212121}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {21212121-2121-2121-2121-212121212121}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {21212121-2121-2121-2121-212121212121}.Release|Any CPU.Build.0 = Release|Any CPU
+
+        {22232323-2323-2323-2323-232323232323}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {22232323-2323-2323-2323-232323232323}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {22232323-2323-2323-2323-232323232323}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {22232323-2323-2323-2323-232323232323}.Release|Any CPU.Build.0 = Release|Any CPU
+
+        {24242424-2424-2424-2424-242424242424}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {24242424-2424-2424-2424-242424242424}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {24242424-2424-2424-2424-242424242424}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {24242424-2424-2424-2424-242424242424}.Release|Any CPU.Build.0 = Release|Any CPU
+
+        {25252525-2525-2525-2525-252525252525}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {25252525-2525-2525-2525-252525252525}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {25252525-2525-2525-2525-252525252525}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {25252525-2525-2525-2525-252525252525}.Release|Any CPU.Build.0 = Release|Any CPU
+    EndGlobalSection
+
+    GlobalSection(NestedProjects) = preSolution
+        {11111111-1111-1111-1111-111111111111} = {F3B0A2A0-8C44-4C2E-9E53-9B2E1F0A1C11}
+        {22222222-2222-2222-2222-222222222222} = {7E1A1B9B-5A6E-4A63-9E3E-6E5D1C7BB222}
+
+        {33333333-3333-3333-3333-333333333333} = {A1C2D3E4-F5A6-47B8-9C10-11D12E13F144}
+        {44444444-4444-4444-4444-444444444444} = {A1C2D3E4-F5A6-47B8-9C10-11D12E13F144}
+        {55555555-5555-5555-5555-555555555555} = {A1C2D3E4-F5A6-47B8-9C10-11D12E13F144}
+        {66666666-6666-6666-6666-666666666666} = {A1C2D3E4-F5A6-47B8-9C10-11D12E13F144}
+        {A1C2D3E4-F5A6-47B8-9C10-11D12E13F144} = {B77E3F3A-9873-4C6D-A1E8-3C4F5D6E7F33}
+
+        {77777777-7777-7777-7777-777777777777} = {C2D3E4F5-A6B7-48C9-8D10-21E31F41A255}
+        {88888888-8888-8888-8888-888888888888} = {C2D3E4F5-A6B7-48C9-8D10-21E31F41A255}
+        {99999999-9999-9999-9999-999999999999} = {C2D3E4F5-A6B7-48C9-8D10-21E31F41A255}
+        {AAAAAAA0-AAAA-AAAA-AAAA-AAAAAAAAAAAA} = {C2D3E4F5-A6B7-48C9-8D10-21E31F41A255}
+        {BBBBBBB0-BBBB-BBBB-BBBB-BBBBBBBBBBBB} = {C2D3E4F5-A6B7-48C9-8D10-21E31F41A255}
+        {C2D3E4F5-A6B7-48C9-8D10-21E31F41A255} = {B77E3F3A-9873-4C6D-A1E8-3C4F5D6E7F33}
+
+        {CCCCCCC0-CCCC-CCCC-CCCC-CCCCCCCCCCCC} = {D3E4F5A6-B7C8-49DA-7E10-31F41A51B366}
+        {DDDDDDD0-DDDD-DDDD-DDDD-DDDDDDDDDDDD} = {D3E4F5A6-B7C8-49DA-7E10-31F41A51B366}
+        {EEEEEEE0-EEEE-EEEE-EEEE-EEEEEEEEEEEE} = {D3E4F5A6-B7C8-49DA-7E10-31F41A51B366}
+        {FFFFFFF0-FFFF-FFFF-FFFF-FFFFFFFFFFFF} = {D3E4F5A6-B7C8-49DA-7E10-31F41A51B366}
+        {D3E4F5A6-B7C8-49DA-7E10-31F41A51B366} = {B77E3F3A-9873-4C6D-A1E8-3C4F5D6E7F33}
+
+        {12121212-1212-1212-1212-121212121212} = {E4F5A6B7-C8D9-4AEB-6F10-41A51B61C477}
+        {13131313-1313-1313-1313-131313131313} = {E4F5A6B7-C8D9-4AEB-6F10-41A51B61C477}
+        {14141414-1414-1414-1414-141414141414} = {E4F5A6B7-C8D9-4AEB-6F10-41A51B61C477}
+        {15151515-1515-1515-1515-151515151515} = {E4F5A6B7-C8D9-4AEB-6F10-41A51B61C477}
+        {E4F5A6B7-C8D9-4AEB-6F10-41A51B61C477} = {B77E3F3A-9873-4C6D-A1E8-3C4F5D6E7F33}
+
+        {16161616-1616-1616-1616-161616161616} = {F5A6B7C8-D9EA-4BFC-5F10-51B61C71D588}
+        {17171717-1717-1717-1717-171717171717} = {F5A6B7C8-D9EA-4BFC-5F10-51B61C71D588}
+        {18181818-1818-1818-1818-181818181818} = {F5A6B7C8-D9EA-4BFC-5F10-51B61C71D588}
+        {19191919-1919-1919-1919-191919191919} = {F5A6B7C8-D9EA-4BFC-5F10-51B61C71D588}
+        {F5A6B7C8-D9EA-4BFC-5F10-51B61C71D588} = {B77E3F3A-9873-4C6D-A1E8-3C4F5D6E7F33}
+
+        {20202020-2020-2020-2020-202020202020} = {A6B7C8D9-EAFB-4C0D-4F10-61C71D81E699}
+        {21212121-2121-2121-2121-212121212121} = {A6B7C8D9-EAFB-4C0D-4F10-61C71D81E699}
+        {22232323-2323-2323-2323-232323232323} = {A6B7C8D9-EAFB-4C0D-4F10-61C71D81E699}
+        {A6B7C8D9-EAFB-4C0D-4F10-61C71D81E699} = {B77E3F3A-9873-4C6D-A1E8-3C4F5D6E7F33}
+
+        {24242424-2424-2424-2424-242424242424} = {B7C8D9EA-FB0C-4D1E-3F10-71D81E91F7AA}
+        {25252525-2525-2525-2525-252525252525} = {B7C8D9EA-FB0C-4D1E-3F10-71D81E91F7AA}
+        {B7C8D9EA-FB0C-4D1E-3F10-71D81E91F7AA} = {B77E3F3A-9873-4C6D-A1E8-3C4F5D6E7F33}
+    EndGlobalSection
+
+    GlobalSection(ExtensibilityGlobals) = postSolution
+        SolutionGuid = {5A5B5C5D-5E5F-6061-6263-646566676869}
+    EndGlobalSection
+EndGlobal
