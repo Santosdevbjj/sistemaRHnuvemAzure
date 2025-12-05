@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: funcionarios-api
+  labels:
+    app: funcionarios-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: funcionarios-api
+  template:
+    metadata:
+      labels:
+        app: funcionarios-api
+    spec:
+      containers:
+        - name: funcionarios-api
+          image: meuacr.azurecr.io/sistema-rh-funcionarios:latest
+          ports:
+            - containerPort: 80
+          env:
+            # Consome secrets injetados no cluster a partir do Key Vault
+            - name: ConnectionStrings__DefaultConnection
+              valueFrom:
+                secretKeyRef:
+                  name: rh-secrets
+                  key: ConnectionStrings__DefaultConnection
+            - name: RabbitMq__Password
+              valueFrom:
+                secretKeyRef:
+                  name: rh-secrets
+                  key: RabbitMq__Password
+            - name: Smtp__Password
+              valueFrom:
+                secretKeyRef:
+                  name: rh-secrets
+                  key: Smtp__Password
+      imagePullSecrets:
+        - name: acr-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: funcionarios-api-service
+spec:
+  type: ClusterIP
+  selector:
+    app: funcionarios-api
+  ports:
+    - port: 80
+      targetPort: 80
