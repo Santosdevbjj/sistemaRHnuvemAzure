@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Pacotes de testes -->
+    <PackageReference Include="xunit" Version="2.6.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.6.0" />
+    <PackageReference Include="FluentAssertions" Version="6.12.0" />
+    <PackageReference Include="Moq" Version="4.20.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Referência ao projeto de API -->
+    <ProjectReference Include="..\..\src\Notifications.Api\Notifications.Api.csproj" />
+    <ProjectReference Include="..\..\..\shared\src\SharedKernel\SharedKernel.csproj" />
+  </ItemGroup>
+
+</Project>
