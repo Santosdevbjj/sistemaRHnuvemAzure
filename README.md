@@ -19,6 +19,16 @@ Este repositório consolida uma arquitetura de microsserviços para um Sistema d
 
 ---
 
+• **Diagrama UML do Sistema de RH**
+
+<img width="1080" height="729" alt="UML_Principais_componente" src="https://github.com/user-attachments/assets/af3a432e-0380-4769-81f2-5d78137f10e2" />
+
+
+
+
+--- 
+
+
 **Visão geral da solução**
 
 - **Objetivo:** plataforma modular de RH, escalável e segura, com serviços independentes integrados via HTTP (API Gateway) e mensageria (RabbitMQ), persistência em bancos separados, observabilidade com logs e notificações, e segurança de segredos via Azure Key Vault.
