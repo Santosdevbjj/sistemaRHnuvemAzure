@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore;
 
 protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
-    // Aplica configuração separada
+    // Aplica configurações separadas
     modelBuilder.ApplyConfiguration(new JornadaTrabalhoConfig());
+    modelBuilder.ApplyConfiguration(new EscalaTrabalhoConfig());
+    modelBuilder.ApplyConfiguration(new RegistroPontoConfig());
 
-    // Outros mapeamentos...
+    // Seeds de JornadaTrabalho
     JornadaSeeds.Seed(modelBuilder);
 }
 namespace JornadaEscala.Infrastructure.Persistence
