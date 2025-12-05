@@ -24,9 +24,16 @@ jobs:
         with:
           azcliversion: 2.30.0
           inlineScript: |
-            echo "ConnectionStrings__DefaultConnection=$(az keyvault secret show --vault-name meu-vault --name ConnectionStrings--DefaultConnection --query value -o tsv)" >> $GITHUB_ENV
-            echo "RabbitMq__Password=$(az keyvault secret show --vault-name meu-vault --name RabbitMq--Password --query value -o tsv)" >> $GITHUB_ENV
-            echo "Smtp__Password=$(az keyvault secret show --vault-name meu-vault --name Smtp--Password --query value -o tsv)" >> $GITHUB_ENV
+            echo "🔎 Validando acesso ao Key Vault: ${{ secrets.AZURE_KEYVAULT_NAME }}"
+            if ! az keyvault show --name ${{ secrets.AZURE_KEYVAULT_NAME }} >/dev/null 2>&1; then
+              echo "❌ ERRO: Key Vault ${{ secrets.AZURE_KEYVAULT_NAME }} não encontrado ou sem permissão."
+              exit 1
+            fi
+
+            echo "✅ Key Vault acessível. Recuperando segredos..."
+            echo "ConnectionStrings__DefaultConnection=$(az keyvault secret show --vault-name ${{ secrets.AZURE_KEYVAULT_NAME }} --name ConnectionStrings--DefaultConnection --query value -o tsv)" >> $GITHUB_ENV
+            echo "RabbitMq__Password=$(az keyvault secret show --vault-name ${{ secrets.AZURE_KEYVAULT_NAME }} --name RabbitMq--Password --query value -o tsv)" >> $GITHUB_ENV
+            echo "Smtp__Password=$(az keyvault secret show --vault-name ${{ secrets.AZURE_KEYVAULT_NAME }} --name Smtp--Password --query value -o tsv)" >> $GITHUB_ENV
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
