@@ -1,0 +1,63 @@
+name: CI/CD - Deploy AKS
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-deploy-aks:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout do código
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Login no Azure usando GitHub Secrets (Service Principal)
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # 3. Configurar kubectl para acessar o cluster AKS
+      - name: Set AKS context
+        uses: azure/aks-set-context@v3
+        with:
+          resource-group: ${{ secrets.AZURE_RESOURCE_GROUP }}
+          cluster-name: ${{ secrets.AZURE_AKS_CLUSTER }}
+
+      # 4. Recuperar segredos do Key Vault
+      - name: Get secrets from Azure Key Vault
+        uses: azure/keyvault-secrets@v1
+        with:
+          keyvault: "meu-vault" # Nome do Key Vault
+          secrets: |
+            ConnectionStrings--DefaultConnection
+            RabbitMq--Password
+            Smtp--Password
+
+      # 5. Build da imagem Docker
+      - name: Build Docker image
+        run: |
+          docker build -t ${{ secrets.ACR_LOGIN_SERVER }}/sistema-rh-funcionarios:${{ github.sha }} ./services/funcionarios-service/src/Funcionarios.Api
+
+      # 6. Login no Azure Container Registry (ACR)
+      - name: ACR Login
+        uses: azure/docker-login@v1
+        with:
+          login-server: ${{ secrets.ACR_LOGIN_SERVER }}
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+
+      # 7. Push da imagem para o ACR
+      - name: Push Docker image
+        run: |
+          docker push ${{ secrets.ACR_LOGIN_SERVER }}/sistema-rh-funcionarios:${{ github.sha }}
+
+      # 8. Atualizar deployment no AKS
+      - name: Deploy to AKS
+        run: |
+          kubectl set image deployment/funcionarios-api funcionarios-api=${{ secrets.ACR_LOGIN_SERVER }}/sistema-rh-funcionarios:${{ github.sha }}
+          kubectl rollout status deployment/funcionarios-api
