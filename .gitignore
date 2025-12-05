@@ -1,0 +1,84 @@
+# ============================================
+# Build outputs do Visual Studio / .NET
+# ============================================
+[Dd]ebug/
+[Rr]elease/
+**/bin/
+**/obj/
+*.user
+*.suo
+*.sln.docstates
+*.cache
+*.pdb
+*.mdb
+project.lock.json
+*.lock.json
+
+# Diretórios de publicação
+**/publish/
+**/out/
+**/artifacts/
+
+# ============================================
+# IDE caches (Visual Studio / VS Code)
+# ============================================
+.vs/
+.vscode/
+.idea/
+*.swp
+*.vspscc
+*.vssscc
+
+# ============================================
+# Configurações locais e variáveis de ambiente (PRIORIDADE ALTA)
+# ============================================
+.env
+docker-compose.override.yml
+docker-compose.local.yml
+appsettings.Development.json
+appsettings.Local.json
+appsettings.*.local.json
+secrets.json
+local.settings.json # Azure Functions
+*.tfvars # Terraform variables (se aplicável)
+terraform.tfstate* # Terraform state (se aplicável)
+
+# ============================================
+# Pacotes e dependências
+# ============================================
+packages/
+*.nupkg
+*.snupkg
+
+# ============================================
+# Azure / Cloud e Publicação
+# ============================================
+PublishProfiles/
+*.pubxml
+*.azurePubxml
+*.PublishSettings
+
+# ============================================
+# Testes e cobertura
+# ============================================
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+*.trx
+
+# ============================================
+# Logs, diagnósticos e temporários
+# ============================================
+*.log
+logs/
+*.bak
+*.tmp
+*.temp
+*.old
+
+# ============================================
+# Sistema Operacional (Windows/macOS)
+# ============================================
+.DS_Store
+Thumbs.db
