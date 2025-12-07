@@ -97,7 +97,7 @@ Este repositório consolida uma **arquitetura de microsserviços** para um Siste
   - **src/Beneficios.Infrastructure/Beneficios.Infrastructure.csproj:** persistência.
   - **tests/Beneficios.Tests/Beneficios.Tests.csproj:** testes.
 
-- Logs Service
+- **Logs Service**
   - **src/Logs.Api/Logs.Api.csproj:** API de logs/consulta.
   - **src/Logs.Infrastructure/TableStorage/FuncionarioLogEntity.cs:** entidade para Azure Table Storage.
   - **src/Logs.Infrastructure/Messaging/FuncionarioEventsConsumer.cs:** consumo de eventos de funcionário para logar.
