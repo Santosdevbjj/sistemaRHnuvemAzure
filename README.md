@@ -33,7 +33,7 @@ Este repositório consolida uma **arquitetura de microsserviços** para um Siste
 
 - **Objetivo:** plataforma modular de RH, escalável e segura, com serviços independentes integrados via HTTP (API Gateway) e mensageria (RabbitMQ), persistência em bancos separados, observabilidade com logs e notificações, e segurança de segredos via Azure Key Vault.
   
-- **Arquitetura:** microsserviços .NET, C# separação em camadas (Api, Domain, Infrastructure), testes unitários e BDD, automação CI/CD em GitHub Actions, deploy em AKS.
+- **Arquitetura:** microsserviços .NET, C#, separação em camadas (Api, Domain, Infrastructure), testes unitários e BDD, automação CI/CD em GitHub Actions, deploy em AKS.
 
 - **Segurança:** .gitignore robusto, GitHub Secret Scanning, GitGuardian monitorando leaks, Key Vault como fonte única de segredos, pipelines que puxam segredos com identidade de serviço.
 
