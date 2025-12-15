@@ -108,8 +108,7 @@ A plataforma .NET foi escolhida devido a:
 - Performance e maturidade para sistemas críticos
 - Suporte robusto a testes automatizados
 
-**Alternativas avaliadas:**  
-Node.js e Java foram considerados, mas o .NET se mostrou mais alinhado ao objetivo de simular um ambiente corporativo típico de grandes organizações.
+
 
 ---
 
