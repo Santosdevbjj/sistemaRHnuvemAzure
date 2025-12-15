@@ -8,6 +8,59 @@
 
 ---
 
+# Sistema de RH em Nuvem com Azure (Arquitetura de Microsserviços)
+
+## Visão Geral
+Este projeto apresenta a concepção e implementação de um **Sistema de Recursos Humanos corporativo**, desenvolvido com **arquitetura de microsserviços**, voltado para ambientes empresariais que demandam **escala, segurança, alta disponibilidade e governança**.
+
+A solução foi projetada para rodar integralmente em **Microsoft Azure**, utilizando **Kubernetes (AKS)**, automação de **CI/CD**, mensageria assíncrona e práticas modernas de **engenharia de software e DevOps**.
+
+Mais do que um sistema funcional, este projeto foi criado como um **case técnico de arquitetura cloud nativa**, simulando cenários reais encontrados em grandes organizações.
+
+---
+
+## Problema que o Projeto se Propõe a Resolver
+Em ambientes corporativos tradicionais, sistemas de RH costumam apresentar:
+- Forte acoplamento entre módulos;
+- Dificuldade de escalar partes específicas do sistema;
+- Baixa automação de deploy e testes;
+- Riscos elevados em mudanças e atualizações.
+
+Este projeto busca resolver esses problemas ao aplicar uma **arquitetura distribuída**, permitindo:
+- Evolução independente dos módulos de RH;
+- Maior confiabilidade em ambientes críticos;
+- Padronização de deploy e governança em nuvem;
+- Redução de riscos operacionais.
+
+---
+
+## Objetivo do Projeto
+O principal objetivo deste projeto é **demonstrar, na prática**, minha capacidade de:
+
+- Projetar arquiteturas corporativas baseadas em **microsserviços**;
+- Aplicar conceitos de **DDD (Domain-Driven Design)**;
+- Implementar pipelines de **CI/CD** e deploy automatizado em Kubernetes;
+- Trabalhar com mensageria, segurança e segregação de responsabilidades;
+- Pensar arquitetura com foco em **negócio, escalabilidade e manutenção**.
+
+Este repositório faz parte do meu **portfólio técnico**, com foco em **cloud computing, engenharia de software e governança de sistemas críticos**.
+
+---
+
+## Arquitetura da Solução (Visão Macro)
+A solução é composta pelos seguintes elementos principais:
+
+- Microsserviços independentes por domínio de negócio (Auth, Funcionários, Jornada, Folha, Benefícios, Logs, Notificações);
+- API Gateway como ponto único de entrada;
+- Comunicação assíncrona via mensageria;
+- Shared Kernel para componentes reutilizáveis;
+- Infraestrutura provisionada e gerenciada na Azure;
+- Deploy automatizado em **Azure Kubernetes Service (AKS)**.
+
+*(Diagramas e detalhes técnicos completos estão descritos nas seções abaixo.)*
+
+
+---
 
 
 
