@@ -1,4 +1,28 @@
-### Construindo um Sistema de Cadastro de Funcionários e Hospedando na Nuvem Azure
+### Sistema de RH em Nuvem com Azure (Arquitetura de Microsserviços)
+
+**Resumo:**
+
+Este repositório apresenta um Sistema de Recursos Humanos corporativo, desenvolvido com arquitetura de microsserviços e implantado na nuvem Microsoft Azure, simulando cenários reais de ambientes empresariais de médio e grande porte.
+
+O projeto demonstra competências em engenharia de software, cloud computing e DevOps, incluindo:
+
+Modelagem de domínios com Domain-Driven Design (DDD)
+
+Arquitetura distribuída com microsserviços independentes
+
+Deploy automatizado em Azure Kubernetes Service (AKS)
+
+Pipelines de CI/CD, testes automatizados e governança em cloud
+
+Comunicação assíncrona com mensageria e preocupação com segurança e observabilidade
+
+
+Mais do que um sistema funcional, este projeto foi concebido como um case técnico de arquitetura cloud nativa, evidenciando capacidade de tomada de decisão arquitetural, visão de escalabilidade, manutenibilidade e alinhamento com práticas corporativas modernas.
+
+Este repositório integra meu portfólio técnico, com foco em sistemas críticos, governança de dados e soluções cloud escaláveis.
+
+
+
 
 ![DotNet_Developer](https://github.com/user-attachments/assets/455a5e1c-e39f-4a1f-a116-78afd895ad45)
 
