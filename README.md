@@ -62,14 +62,6 @@ A solução é composta pelos seguintes elementos principais:
 
 ---
 
-
-
-**Sistema de recursos humanos**
-
-Este repositório consolida uma **arquitetura de microsserviços** para um Sistema de Recursos Humanos, cobrindo autenticação, cadastro de funcionários, jornada/escala, folha de pagamento, benefícios, logs e notificações, além de um API Gateway, um Shared Kernel, automações de CI/CD e implantação em AKS com integração segura ao Azure Key Vault.
-
-**Este guia:** explica a estrutura de pastas, cada arquivo principal e sua funcionalidade, como compilar e testar com dotnet, como executar localmente, requisitos e tecnologias, e traz um esquema visual da árvore de diretórios.
-
 ---
 
 • **Diagrama UML do Sistema de RH**
