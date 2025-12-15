@@ -62,6 +62,147 @@ A solução é composta pelos seguintes elementos principais:
 
 ---
 
+## Decisões Técnicas
+
+Este projeto foi estruturado com foco em **ambientes corporativos reais**, considerando requisitos comuns de sistemas de RH: escalabilidade, segurança, manutenibilidade, observabilidade e automação de deploy.
+
+A seguir, explico as principais decisões técnicas adotadas e os motivos por trás de cada uma.
+
+### Arquitetura em Microsserviços
+
+Optei por uma arquitetura baseada em microsserviços para permitir:
+- Escalabilidade independente por domínio funcional (Funcionários, Folha, Benefícios, Autenticação, etc.)
+- Isolamento de responsabilidades
+- Evolução incremental do sistema sem impacto global
+
+Cada microsserviço representa um **bounded context**, seguindo princípios de Domain-Driven Design (DDD).
+
+**Trade-off:**  
+Essa abordagem aumenta a complexidade operacional em comparação a um monólito, mas reflete melhor cenários corporativos de médio e grande porte.
+
+---
+
+### Domain-Driven Design (DDD)
+
+O DDD foi adotado para:
+- Centralizar regras de negócio no domínio
+- Evitar lógica espalhada em controllers ou infraestrutura
+- Facilitar testes e manutenção
+
+As camadas foram organizadas em:
+- Domain
+- Application
+- Infrastructure
+- API
+
+**Trade-off:**  
+Maior esforço inicial de modelagem, compensado por maior clareza e longevidade do código.
+
+---
+
+### .NET como plataforma principal
+
+A plataforma .NET foi escolhida devido a:
+- Forte suporte a aplicações corporativas
+- Excelente integração com o ecossistema Azure
+- Performance e maturidade para sistemas críticos
+- Suporte robusto a testes automatizados
+
+**Alternativas avaliadas:**  
+Node.js e Java foram considerados, mas o .NET se mostrou mais alinhado ao objetivo de simular um ambiente corporativo típico de grandes organizações.
+
+---
+
+### Comunicação assíncrona com RabbitMQ
+
+Utilizei mensageria para:
+- Reduzir acoplamento entre serviços
+- Permitir processamento assíncrono de eventos
+- Aumentar resiliência do sistema
+
+Eventos são utilizados, por exemplo, para notificações, auditoria e integração entre domínios.
+
+**Trade-off:**  
+A introdução de mensageria exige maior controle operacional, mas melhora a robustez do sistema.
+
+---
+
+### API Gateway
+
+Um API Gateway foi adotado para:
+- Centralizar o acesso aos microsserviços
+- Facilitar controle de rotas, segurança e versionamento
+- Simular padrões comuns em arquiteturas cloud corporativas
+
+---
+
+### Containerização com Docker
+
+Todos os serviços foram containerizados para:
+- Garantir consistência entre ambientes
+- Facilitar deploy em Kubernetes
+- Padronizar execução local e em cloud
+
+---
+
+### Kubernetes (AKS) como orquestrador
+
+O Azure Kubernetes Service (AKS) foi escolhido para:
+- Orquestração de containers
+- Escalabilidade automática
+- Alta disponibilidade
+- Alinhamento com práticas modernas de Cloud Native
+
+**Trade-off:**  
+Kubernetes adiciona complexidade operacional, mas é amplamente utilizado em ambientes corporativos e foi escolhido propositalmente para demonstrar domínio desse cenário.
+
+---
+
+### CI/CD automatizado
+
+Pipelines de CI/CD foram implementados para:
+- Build automático das imagens Docker
+- Execução de testes
+- Deploy contínuo no AKS
+- Gerenciamento seguro de segredos
+
+Isso garante:
+- Reprodutibilidade
+- Redução de erros manuais
+- Entregas consistentes
+
+---
+
+### Testes automatizados
+
+O projeto inclui:
+- Testes unitários
+- Testes de integração
+- Testes BDD
+
+O objetivo foi demonstrar preocupação com:
+- Qualidade de código
+- Manutenibilidade
+- Confiabilidade do sistema
+
+---
+
+### Segurança e gestão de segredos
+
+Segredos e configurações sensíveis foram tratados considerando boas práticas de segurança em cloud, evitando hardcoding e simulando integrações seguras típicas de ambientes corporativos.
+
+---
+
+### Observabilidade e logging
+
+Foi adotada uma abordagem de logging centralizado para:
+- Facilitar diagnóstico de falhas
+- Monitorar comportamento dos serviços
+- Apoiar manutenção e evolução do sistema
+
+  
+
+
 ---
 
 • **Diagrama UML do Sistema de RH**
