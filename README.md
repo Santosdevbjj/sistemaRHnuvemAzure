@@ -2,7 +2,7 @@
 
 **Resumo:**
 
-Este repositório apresenta um Sistema de Recursos Humanos corporativo, desenvolvido com arquitetura de microsserviços e implantado na nuvem Microsoft Azure, simulando cenários reais de ambientes empresariais de médio e grande porte.
+Este projeto apresenta um Sistema de Recursos Humanos corporativo, desenvolvido com arquitetura de microsserviços e implantado na nuvem Microsoft Azure, simulando cenários reais de ambientes empresariais de médio e grande porte.
 
 O projeto demonstra competências em engenharia de software, cloud computing e DevOps, incluindo:
 
